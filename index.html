@@ -1,631 +1,640 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#3d2448" />
-  <title>Akanksha's Birthday ✨</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff8fb">
+<title>Akanksha's Birthday ✨</title>
 
-  <!-- Poppins: online font with safe fallback -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-  <style>
-    :root{
-      --bg1:#fff8fb;
-      --bg2:#f7f2ff;
-      --ink:#2b1f30;
-      --muted:#74687b;
-      --plum:#5e376d;
-      --violet:#8c6cf2;
-      --rose:#ff6fa6;
-      --peach:#ffb48b;
-      --gold:#ffd66b;
-      --mint:#8fdcc8;
-      --white:#ffffff;
-      --glass:rgba(255,255,255,.76);
-      --glass2:rgba(255,255,255,.92);
-      --border:rgba(255,255,255,.92);
-      --shadow:0 28px 80px rgba(75,43,92,.16);
-      --soft-shadow:0 14px 34px rgba(75,43,92,.10);
-    }
+:root{
+  --ink:#2f2335;
+  --muted:#786a80;
+  --pink:#ff7fab;
+  --pinkDeep:#e85e98;
+  --lav:#a88cf0;
+  --lavDeep:#7e62d7;
+  --peach:#ffb994;
+  --gold:#ffd573;
+  --cream:#fffaf8;
+  --card:rgba(255,255,255,.84);
+  --cardStrong:rgba(255,255,255,.95);
+  --line:rgba(112,78,126,.10);
+  --shadow:0 22px 65px rgba(82,52,102,.14);
+  --shadowSmall:0 11px 27px rgba(82,52,102,.09);
+}
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      min-height:100vh;
-      font-family:"Poppins",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      color:var(--ink);
-      overflow-x:hidden;
-      background:
-        radial-gradient(circle at 10% 8%,rgba(255,111,166,.24),transparent 28%),
-        radial-gradient(circle at 92% 12%,rgba(140,108,242,.22),transparent 30%),
-        radial-gradient(circle at 58% 100%,rgba(255,180,139,.22),transparent 34%),
-        linear-gradient(150deg,var(--bg1),var(--bg2) 55%,#fff9f2);
-    }
+*{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+}
+body{
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+  overscroll-behavior-y:none;
+  color:var(--ink);
+  font-family:'Nunito', sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(255,127,171,.22),transparent 28%),
+    radial-gradient(circle at 90% 12%,rgba(168,140,240,.22),transparent 30%),
+    radial-gradient(circle at 58% 100%,rgba(255,185,148,.20),transparent 34%),
+    linear-gradient(145deg,#fff8fb,#f8f4ff 54%,#fff9f5);
+}
+button,input{font:inherit}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 
-    button,input{font:inherit}
-    button{-webkit-tap-highlight-color:transparent}
+.bg-orb{
+  position:fixed;
+  z-index:0;
+  border-radius:50%;
+  filter:blur(70px);
+  opacity:.20;
+  pointer-events:none;
+  will-change:transform;
+}
+.orb1{width:220px;height:220px;background:#ff91b8;left:-80px;top:14vh;animation:drift1 12s ease-in-out infinite alternate}
+.orb2{width:250px;height:250px;background:#a58cf2;right:-100px;top:42vh;animation:drift2 15s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate3d(28px,-18px,0)}}
+@keyframes drift2{to{transform:translate3d(-24px,20px,0)}}
 
-    .ambient{
-      position:fixed; inset:-25%;
-      z-index:0; pointer-events:none;
-      filter:blur(80px); opacity:.25;
-      background:conic-gradient(from 90deg,#ff7bac,transparent 22%,#987df5 34%,transparent 54%,#ffbf99 68%,transparent 82%,#8fdcc8);
-      animation:spinBg 22s linear infinite;
-    }
-    @keyframes spinBg{to{transform:rotate(360deg) scale(1.05)}}
+.app{
+  width:min(100%,980px);
+  margin:auto;
+  padding:12px 12px calc(28px + env(safe-area-inset-bottom));
+  position:relative;
+  z-index:2;
+}
 
-    .grain{
-      position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.22;
-      background-image:radial-gradient(rgba(255,255,255,.85) .8px,transparent .8px);
-      background-size:26px 26px;
-      mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.45) 65%,transparent 100%);
-    }
+.progress{
+  position:fixed;
+  z-index:30;
+  top:max(10px,env(safe-area-inset-top));
+  left:50%;
+  transform:translateX(-50%);
+  width:min(92vw,520px);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 11px;
+  border-radius:999px;
+  background:rgba(255,255,255,.80);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:var(--shadowSmall);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.bars{display:flex;gap:5px;flex:1}
+.bar{height:6px;flex:1;overflow:hidden;border-radius:99px;background:rgba(97,66,112,.09)}
+.bar span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--pink),var(--lav));transition:width .50s cubic-bezier(.22,.8,.22,1)}
+.brand{font-size:11px;font-weight:900;color:var(--lavDeep);white-space:nowrap}
 
-    .app{position:relative;z-index:2;max-width:980px;margin:auto;padding:14px 12px calc(24px + env(safe-area-inset-bottom))}
+.scene{
+  display:none;
+  min-height:100dvh;
+  align-items:center;
+  justify-content:center;
+  padding:72px 0 14px;
+  opacity:0;
+  transform:translate3d(0,15px,0) scale(.993);
+  transition:
+    opacity .42s ease,
+    transform .52s cubic-bezier(.2,.8,.2,1);
+  will-change:opacity,transform;
+}
+.scene.active{display:flex}
+.scene.visible{opacity:1;transform:translate3d(0,0,0) scale(1)}
+.scene.leaving{opacity:0;transform:translate3d(0,-8px,0) scale(.996)}
 
-    .progress{
-      position:fixed;
-      z-index:30;
-      top:max(10px,env(safe-area-inset-top));
-      left:50%;
-      transform:translateX(-50%);
-      width:min(92vw,520px);
-      padding:9px 10px;
-      display:flex;
-      gap:8px;
-      align-items:center;
-      border-radius:999px;
-      background:rgba(255,255,255,.66);
-      backdrop-filter:blur(20px);
-      -webkit-backdrop-filter:blur(20px);
-      border:1px solid rgba(255,255,255,.88);
-      box-shadow:var(--soft-shadow);
-    }
-    .bars{display:flex;gap:5px;flex:1}
-    .bar{height:6px;flex:1;border-radius:999px;background:rgba(94,55,109,.10);overflow:hidden}
-    .bar span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--rose),var(--violet));transition:.45s ease}
-    .tag{font-size:11px;font-weight:800;color:var(--plum);white-space:nowrap}
+.panel{
+  width:100%;
+  position:relative;
+  overflow:hidden;
+  border-radius:32px;
+  padding:clamp(23px,5vw,44px);
+  background:linear-gradient(150deg,rgba(255,255,255,.92),rgba(255,255,255,.72));
+  border:1px solid rgba(255,255,255,.98);
+  box-shadow:var(--shadow);
+}
+.panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 8%,rgba(255,127,171,.10),transparent 27%),
+    radial-gradient(circle at 91% 8%,rgba(168,140,240,.11),transparent 29%);
+}
 
-    .scene{
-      display:none;
-      min-height:100dvh;
-      align-items:center;
-      justify-content:center;
-      padding:72px 0 14px;
-    }
-    .scene.active{
-      display:flex;
-      animation:sceneIn .55s cubic-bezier(.2,.8,.2,1) both;
-    }
-    @keyframes sceneIn{
-      from{opacity:0;transform:translateY(18px) scale(.985);filter:blur(5px)}
-      to{opacity:1;transform:none;filter:none}
-    }
+.center{text-align:center}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-bottom:18px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.90);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:var(--shadowSmall);
+  color:var(--lavDeep);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
 
-    .panel{
-      width:100%;
-      position:relative;
-      overflow:hidden;
-      isolation:isolate;
-      padding:clamp(22px,5vw,46px);
-      border-radius:34px;
-      background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(255,255,255,.64));
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(26px);
-      -webkit-backdrop-filter:blur(26px);
-    }
-    .panel::before{
-      content:"";
-      position:absolute;inset:0;z-index:-1;
-      background:
-        radial-gradient(circle at 8% 8%,rgba(255,111,166,.12),transparent 26%),
-        radial-gradient(circle at 90% 8%,rgba(140,108,242,.12),transparent 28%),
-        radial-gradient(circle at 50% 100%,rgba(255,180,139,.10),transparent 30%);
-    }
+h1,h2,h3,p{margin-top:0;overflow-wrap:anywhere}
+h1{
+  max-width:820px;
+  margin:0 auto 16px;
+  font-size:clamp(38px,7.6vw,76px);
+  line-height:1.00;
+  letter-spacing:-.043em;
+  font-weight:900;
+}
+h2{
+  max-width:760px;
+  margin:0 auto 12px;
+  font-size:clamp(29px,5.4vw,50px);
+  line-height:1.07;
+  letter-spacing:-.032em;
+  font-weight:900;
+}
+h3{font-size:18px;line-height:1.25;margin-bottom:6px}
+p{
+  font-size:clamp(15px,2.4vw,17px);
+  line-height:1.68;
+}
+.lead{max-width:720px;margin-left:auto;margin-right:auto}
+.muted{color:var(--muted)}
+.gradient{
+  background:linear-gradient(112deg,#e65692 0%,#7659dd 52%,#e97d93 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
 
-    .center{text-align:center}
-    .eyebrow{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:8px 12px;
-      margin-bottom:18px;
-      border-radius:999px;
-      background:rgba(255,255,255,.83);
-      box-shadow:var(--soft-shadow);
-      color:var(--plum);
-      font-size:11px;
-      font-weight:800;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-    }
+.hero{
+  width:92px;height:92px;
+  margin:0 auto 20px;
+  display:grid;place-items:center;
+  border-radius:28px;
+  font-size:44px;
+  background:linear-gradient(145deg,#fff,#fff2f8 52%,#f1edff);
+  border:1px solid white;
+  box-shadow:0 18px 40px rgba(92,59,115,.13);
+  animation:float 3.3s ease-in-out infinite;
+  will-change:transform;
+}
+@keyframes float{50%{transform:translate3d(0,-7px,0)}}
 
-    h1,h2,h3,p{margin-top:0}
-    h1{
-      margin-bottom:16px;
-      font-size:clamp(40px,8vw,78px);
-      line-height:.98;
-      letter-spacing:-.045em;
-      font-weight:900;
-    }
-    h2{
-      margin-bottom:12px;
-      font-size:clamp(30px,5.5vw,52px);
-      line-height:1.04;
-      letter-spacing:-.035em;
-      font-weight:900;
-    }
-    h3{font-size:18px;margin-bottom:6px}
-    p{font-size:clamp(15px,2.5vw,17px);line-height:1.72}
-    .muted{color:var(--muted)}
-    .lead{max-width:720px;margin-left:auto;margin-right:auto}
-    .gradient{
-      background:linear-gradient(112deg,#e7508e,#7658dd 54%,#ec7991);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
+.nickname-row{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin:17px 0 0;
+}
+.nickname{
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(255,255,255,.96);
+  box-shadow:var(--shadowSmall);
+  color:var(--lavDeep);
+  font-size:12px;
+  font-weight:900;
+}
 
-    .orb{
-      width:98px;height:98px;
-      margin:0 auto 20px;
-      border-radius:32px;
-      display:grid;place-items:center;
-      font-size:47px;
-      background:linear-gradient(145deg,#fff,#fff2f8 50%,#f3efff);
-      border:1px solid rgba(255,255,255,.95);
-      box-shadow:0 22px 52px rgba(91,55,113,.16);
-      animation:float 3s ease-in-out infinite;
-    }
-    @keyframes float{50%{transform:translateY(-9px) rotate(2deg)}}
+.actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:23px;
+}
+.btn{
+  min-height:52px;
+  padding:13px 19px;
+  border:0;
+  border-radius:17px;
+  cursor:pointer;
+  font-weight:900;
+  line-height:1.25;
+  transition:transform .16s ease,box-shadow .16s ease,filter .16s ease;
+}
+.btn:hover{transform:translate3d(0,-2px,0)}
+.btn:active{transform:scale(.985)}
+.primary{color:white;background:linear-gradient(135deg,var(--pinkDeep),var(--lavDeep));box-shadow:0 11px 25px rgba(110,73,155,.16)}
+.secondary{color:var(--ink);background:rgba(255,255,255,.92);border:1px solid var(--line)}
+.danger{color:white;background:linear-gradient(135deg,#ff5f81,#ff8a70)}
+.hidden{display:none!important}
 
-    .nickname-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:18px 0 0}
-    .nickname{
-      padding:9px 13px;
-      border-radius:999px;
-      background:rgba(255,255,255,.88);
-      border:1px solid white;
-      color:var(--plum);
-      box-shadow:var(--soft-shadow);
-      font-size:12px;
-      font-weight:800;
-    }
+.verify-box{
+  max-width:540px;
+  margin:22px auto 0;
+  padding:17px;
+  border-radius:23px;
+  background:rgba(255,255,255,.65);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:var(--shadowSmall);
+}
+.input-row{display:flex;gap:9px;justify-content:center;align-items:center;flex-wrap:wrap}
+input{
+  width:min(100%,300px);
+  min-height:53px;
+  padding:0 15px;
+  border-radius:16px;
+  border:1px solid rgba(103,72,118,.14);
+  background:white;
+  color:var(--ink);
+  outline:0;
+  text-align:center;
+  font-weight:800;
+  font-size:16px;
+  letter-spacing:.02em;
+}
+input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,215,.09)}
+.msg{min-height:25px;margin-top:12px;color:var(--muted);font-weight:700}
 
-    .actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-    .btn{
-      min-height:52px;
-      border:0;
-      border-radius:17px;
-      padding:13px 19px;
-      cursor:pointer;
-      font-weight:800;
-      transition:.22s ease;
-      box-shadow:0 10px 24px rgba(75,43,92,.11);
-    }
-    .btn:hover{transform:translateY(-2px)}
-    .btn:active{transform:scale(.98)}
-    .primary{color:#fff;background:linear-gradient(135deg,#ed5f98,#7e62df)}
-    .secondary{color:var(--ink);background:rgba(255,255,255,.90);border:1px solid rgba(255,255,255,.95)}
-    .danger{color:#fff;background:linear-gradient(135deg,#ff587a,#ff8a6f)}
-    .hidden{display:none!important}
+.receipt-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:22px;
+}
+.receipt{
+  position:relative;
+  overflow:hidden;
+  padding:18px;
+  border-radius:22px;
+  text-align:left;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(255,255,255,.96);
+  box-shadow:var(--shadowSmall);
+}
+.receipt strong{display:block;font-size:29px;line-height:1;color:var(--lavDeep);margin-bottom:8px}
+.receipt p{font-size:13px;margin:0;color:var(--muted)}
 
-    .verification{
-      max-width:540px;
-      margin:22px auto 0;
-      padding:17px;
-      border-radius:24px;
-      background:rgba(255,255,255,.62);
-      border:1px solid rgba(255,255,255,.95);
-      box-shadow:var(--soft-shadow);
-    }
-    .input-row{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
-    input{
-      width:min(100%,300px);
-      min-height:53px;
-      border-radius:16px;
-      border:1px solid rgba(94,55,109,.13);
-      background:white;
-      outline:0;
-      text-align:center;
-      padding:0 15px;
-      color:var(--ink);
-      font-weight:700;
-      font-size:16px;
-    }
-    input:focus{border-color:rgba(140,108,242,.52);box-shadow:0 0 0 4px rgba(140,108,242,.10)}
-    .message{min-height:25px;margin-top:12px;color:var(--muted);font-weight:700}
+.machine{
+  max-width:650px;
+  margin:22px auto 0;
+  padding:18px;
+  border-radius:24px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.96);
+  box-shadow:var(--shadowSmall);
+}
+.machine-screen{
+  min-height:110px;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#fff,#faf7ff);
+  border:1px solid var(--line);
+  font-size:clamp(16px,3vw,21px);
+  line-height:1.55;
+  font-weight:800;
+}
 
-    .scan{
-      width:min(420px,86%);
-      height:10px;
-      margin:22px auto 0;
-      border-radius:999px;
-      background:rgba(94,55,109,.08);
-      overflow:hidden;
-    }
-    .scan span{
-      display:block;width:0;height:100%;
-      background:linear-gradient(90deg,var(--rose),var(--violet),var(--peach));
-      animation:scan 1.7s ease .2s forwards;
-    }
-    @keyframes scan{to{width:100%}}
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:22px;
+}
+.memory{
+  overflow:hidden;
+  text-align:left;
+  border-radius:22px;
+  background:rgba(255,255,255,.83);
+  border:1px solid rgba(255,255,255,.96);
+  box-shadow:var(--shadowSmall);
+  transition:transform .20s ease;
+}
+.memory:hover{transform:translate3d(0,-3px,0)}
+.photo{
+  aspect-ratio:4/3;
+  display:grid;
+  place-items:center;
+  font-size:43px;
+  background:
+    radial-gradient(circle at 20% 18%,rgba(255,255,255,.85),transparent 23%),
+    linear-gradient(135deg,#ffd8e6,#ddd5ff 55%,#ffe1c1);
+}
+.memory-copy{padding:14px}
+.memory-copy p{margin:0;font-size:13px;color:var(--muted)}
 
-    .receipt-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:13px;
-      margin-top:23px;
-    }
-    .receipt{
-      text-align:left;
-      padding:18px;
-      border-radius:23px;
-      background:rgba(255,255,255,.84);
-      border:1px solid rgba(255,255,255,.96);
-      box-shadow:var(--soft-shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .receipt::after{
-      content:"";
-      position:absolute;right:-18px;top:-18px;
-      width:64px;height:64px;border-radius:50%;
-      background:linear-gradient(135deg,rgba(255,111,166,.14),rgba(140,108,242,.14));
-    }
-    .receipt .num{font-size:29px;font-weight:900;color:var(--plum);line-height:1}
-    .receipt p{font-size:13px;margin:7px 0 0;color:var(--muted);font-weight:600}
+.chat{max-width:680px;margin:22px auto 0;display:grid;gap:10px}
+.bubble{
+  max-width:88%;
+  padding:13px 15px;
+  border-radius:18px;
+  text-align:left;
+  font-size:14px;
+  line-height:1.5;
+  font-weight:700;
+  box-shadow:var(--shadowSmall);
+}
+.them{justify-self:start;background:white;border-bottom-left-radius:5px}
+.me{justify-self:end;color:white;background:linear-gradient(135deg,var(--pinkDeep),var(--lavDeep));border-bottom-right-radius:5px}
 
-    .machine{
-      max-width:650px;
-      margin:24px auto 0;
-      padding:20px;
-      border-radius:26px;
-      background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(255,248,252,.75));
-      border:1px solid white;
-      box-shadow:var(--soft-shadow);
-    }
-    .machine-screen{
-      min-height:120px;
-      display:grid;
-      place-items:center;
-      padding:20px;
-      border-radius:20px;
-      background:
-        radial-gradient(circle at 15% 10%,rgba(255,111,166,.15),transparent 28%),
-        linear-gradient(145deg,#fff,#faf7ff);
-      border:1px solid rgba(94,55,109,.07);
-      font-weight:800;
-      font-size:clamp(17px,3vw,22px);
-    }
+.warning-box{
+  max-width:560px;
+  margin:22px auto 0;
+  padding:20px;
+  border-radius:24px;
+  background:rgba(255,255,255,.83);
+  border:1px solid white;
+  box-shadow:var(--shadowSmall);
+}
 
-    .memory-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:13px;
-      margin-top:22px;
-    }
-    .memory{
-      overflow:hidden;
-      border-radius:23px;
-      background:rgba(255,255,255,.84);
-      border:1px solid rgba(255,255,255,.95);
-      box-shadow:var(--soft-shadow);
-      text-align:left;
-      transition:.22s ease;
-    }
-    .memory:hover{transform:translateY(-3px)}
-    .photo{
-      aspect-ratio:4/3;
-      display:grid;
-      place-items:center;
-      font-size:44px;
-      background:
-        radial-gradient(circle at 20% 18%,rgba(255,255,255,.9),transparent 24%),
-        linear-gradient(135deg,#ffd8e5,#ddd5ff 55%,#ffe2c2);
-    }
-    .memory-copy{padding:14px}
-    .memory-copy p{margin:0;font-size:13px;color:var(--muted)}
+.letter{
+  max-width:720px;
+  margin:22px auto 0;
+  padding:24px;
+  border-radius:25px;
+  text-align:left;
+  background:
+    linear-gradient(rgba(255,255,255,.94),rgba(255,255,255,.94)),
+    repeating-linear-gradient(to bottom,transparent 0 31px,#efe7ef 32px 33px);
+  border:1px solid #f1e6ee;
+  box-shadow:var(--shadowSmall);
+}
+.letter p{font-size:15.5px}
+.signature{margin-top:20px;font-weight:900;color:var(--lavDeep)}
 
-    .chat{
-      max-width:680px;
-      margin:23px auto 0;
-      display:grid;
-      gap:10px;
-    }
-    .bubble{
-      max-width:88%;
-      padding:13px 15px;
-      border-radius:19px;
-      text-align:left;
-      font-size:14px;
-      font-weight:700;
-      box-shadow:var(--soft-shadow);
-    }
-    .them{justify-self:start;background:white;border-bottom-left-radius:6px}
-    .me{justify-self:end;color:#fff;background:linear-gradient(135deg,#e85a97,#8267e8);border-bottom-right-radius:6px}
+.gift-wrap{
+  max-width:650px;
+  margin:22px auto 0;
+  padding:21px;
+  border-radius:25px;
+  background:rgba(255,255,255,.79);
+  border:1px solid white;
+  box-shadow:var(--shadowSmall);
+}
+.gift-btn{
+  width:168px;height:168px;
+  margin:auto;
+  display:grid;place-items:center;
+  border:0;background:transparent;
+  font-size:86px;
+  cursor:pointer;
+  animation:giftFloat 1.8s ease-in-out infinite;
+}
+@keyframes giftFloat{50%{transform:translate3d(0,-7px,0) scale(1.045)}}
+.gift-reveal{
+  margin-top:14px;
+  padding:20px;
+  border-radius:20px;
+  background:white;
+  border:1px solid var(--line);
+  animation:reveal .40s ease both;
+}
+@keyframes reveal{from{opacity:0;transform:translate3d(0,8px,0) scale(.97)}to{opacity:1;transform:none}}
 
-    .warning-box{
-      max-width:560px;
-      margin:23px auto 0;
-      padding:20px;
-      border-radius:25px;
-      background:rgba(255,255,255,.86);
-      border:1px solid white;
-      box-shadow:var(--soft-shadow);
-    }
+#fx{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  pointer-events:none;
+  overflow:hidden;
+}
+.conf{
+  position:absolute;
+  top:-16px;
+  width:9px;height:14px;
+  border-radius:3px;
+  animation:fall 2.6s linear forwards;
+  will-change:transform;
+}
+@keyframes fall{to{transform:translate3d(0,112vh,0) rotate(620deg);opacity:.9}}
+.spark{
+  position:absolute;width:6px;height:6px;border-radius:50%;
+  background:white;box-shadow:0 0 12px 4px rgba(255,255,255,.7);
+  animation:spark .75s ease-out forwards;
+}
+@keyframes spark{to{transform:translate3d(var(--x),var(--y),0) scale(1.3);opacity:0}}
+.shake{animation:shake .32s ease}
+@keyframes shake{25%{transform:translate3d(-7px,0,0)}75%{transform:translate3d(7px,0,0)}}
 
-    .letter{
-      max-width:720px;
-      margin:23px auto 0;
-      padding:25px;
-      border-radius:27px;
-      text-align:left;
-      background:
-        linear-gradient(rgba(255,255,255,.94),rgba(255,255,255,.94)),
-        repeating-linear-gradient(to bottom,transparent 0 31px,#eee7f0 32px 33px);
-      border:1px solid #f0e5ed;
-      box-shadow:var(--soft-shadow);
-    }
-    .letter p{font-size:15.5px}
-    .signature{margin-top:20px;font-weight:800;color:var(--plum)}
-
-    .gift-wrap{
-      max-width:660px;
-      margin:22px auto 0;
-      padding:22px;
-      border-radius:28px;
-      background:rgba(255,255,255,.82);
-      border:1px solid white;
-      box-shadow:var(--soft-shadow);
-    }
-    .gift-btn{
-      width:180px;height:180px;
-      margin:0 auto;
-      display:grid;place-items:center;
-      border:0;background:transparent;
-      font-size:92px;cursor:pointer;
-      position:relative;
-      filter:drop-shadow(0 18px 20px rgba(91,55,113,.20));
-      animation:giftFloat 1.7s ease-in-out infinite;
-    }
-    .gift-btn::before,.gift-btn::after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      border:2px dashed rgba(140,108,242,.28);
-    }
-    .gift-btn::before{inset:10px;animation:ring 9s linear infinite}
-    .gift-btn::after{inset:28px;border-color:rgba(255,111,166,.24);animation:ring 12s linear reverse infinite}
-    @keyframes ring{to{transform:rotate(360deg)}}
-    @keyframes giftFloat{50%{transform:translateY(-8px) scale(1.06)}}
-
-    .gift-reveal{
-      margin-top:14px;
-      padding:21px;
-      border-radius:22px;
-      background:linear-gradient(135deg,#fff,#fff6fb);
-      border:1px solid white;
-      animation:reveal .45s ease both;
-    }
-    @keyframes reveal{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
-
-    #fx{position:fixed;inset:0;z-index:100;pointer-events:none;overflow:hidden}
-    .confetti{position:absolute;top:-18px;width:10px;height:15px;border-radius:3px;animation:fall 3s linear forwards}
-    @keyframes fall{to{transform:translateY(112vh) rotate(760deg);opacity:.95}}
-    .spark{position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 14px 5px rgba(255,255,255,.75);animation:spark .8s ease-out forwards}
-    @keyframes spark{to{transform:translate(var(--x),var(--y)) scale(1.5);opacity:0}}
-    .shake{animation:shake .34s ease}
-    @keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
-
-    @media(max-width:700px){
-      .receipt-grid,.memory-grid{grid-template-columns:1fr}
-    }
-    @media(max-width:560px){
-      .app{padding:8px 8px calc(18px + env(safe-area-inset-bottom))}
-      .scene{padding-top:68px}
-      .panel{padding:22px 14px 20px;border-radius:26px}
-      .orb{width:80px;height:80px;border-radius:25px;font-size:38px}
-      .actions{flex-direction:column}
-      .btn{width:100%}
-      .gift-btn{width:158px;height:158px;font-size:80px}
-      .letter{padding:19px 16px}
-      .progress{width:calc(100vw - 18px)}
-    }
-  </style>
+@media(max-width:700px){
+  .receipt-grid,.memory-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .app{padding:8px 8px calc(18px + env(safe-area-inset-bottom))}
+  .scene{padding-top:68px}
+  .panel{padding:21px 14px 19px;border-radius:24px}
+  .hero{width:78px;height:78px;border-radius:23px;font-size:37px;margin-bottom:17px}
+  h1{font-size:clamp(34px,11vw,48px);line-height:1.04;letter-spacing:-.035em}
+  h2{font-size:clamp(27px,8.7vw,39px);line-height:1.08;letter-spacing:-.025em}
+  p{font-size:15px;line-height:1.62}
+  .lead{max-width:100%}
+  .actions{flex-direction:column}
+  .btn{width:100%;min-height:50px;padding:13px 14px;font-size:14px}
+  .progress{width:calc(100vw - 18px);padding:8px 9px}
+  .brand{font-size:10px}
+  .nickname{font-size:11px;padding:7px 10px}
+  .verify-box{padding:14px}
+  .input-row{flex-direction:column}
+  input{width:100%;font-size:16px}
+  .receipt,.memory-copy,.machine,.warning-box,.gift-wrap{padding-left:14px;padding-right:14px}
+  .letter{padding:18px 15px}
+  .bubble{max-width:92%;font-size:13.5px}
+  .gift-btn{width:145px;height:145px;font-size:76px}
+}
+@media(max-width:380px){
+  h1{font-size:32px}
+  h2{font-size:27px}
+  .panel{padding-left:12px;padding-right:12px}
+  .badge{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+</style>
 </head>
 <body>
-  <div class="ambient"></div>
-  <div class="grain"></div>
-  <div id="fx"></div>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div id="fx"></div>
 
-  <div class="progress">
-    <div class="bars">
-      <div class="bar"><span></span></div>
-      <div class="bar"><span></span></div>
-      <div class="bar"><span></span></div>
-      <div class="bar"><span></span></div>
-      <div class="bar"><span></span></div>
-      <div class="bar"><span></span></div>
-      <div class="bar"><span></span></div>
-    </div>
-    <div class="tag">AKANKSHA ✨</div>
+<div class="progress">
+  <div class="bars">
+    <div class="bar"><span></span></div>
+    <div class="bar"><span></span></div>
+    <div class="bar"><span></span></div>
+    <div class="bar"><span></span></div>
+    <div class="bar"><span></span></div>
+    <div class="bar"><span></span></div>
+    <div class="bar"><span></span></div>
   </div>
+  <div class="brand">AKANKSHA ✨</div>
+</div>
 
-  <main class="app">
+<main class="app">
+<section class="scene active" id="s1">
+  <div class="panel center">
+    <div class="hero">🔐</div>
+    <div class="badge">private birthday access</div>
+    <h1><span class="gradient">Only Akanksha gets in.</span></h1>
+    <p class="lead">If your friends call you <b>Akude</b>, <b>Akde</b>, or sometimes <b>Monkey</b>… this suspiciously specific website is probably for you. 😂</p>
+    <div class="nickname-row"><span class="nickname">Akude ✨</span><span class="nickname">Akde 😂</span><span class="nickname">Monkey 🙈</span></div>
+    <div class="actions">
+      <button class="btn primary" id="yesBtn">Okay, let me in 👀</button>
+      <button class="btn secondary" id="noBtn">Wrong person 😌</button>
+    </div>
+    <div class="msg" id="notHer"></div>
+  </div>
+</section>
 
-    <section class="scene active" id="s1">
-      <div class="panel center">
-        <div class="orb">🔐</div>
-        <div class="eyebrow">private birthday access</div>
-        <h1><span class="gradient">Only Akanksha gets in.</span></h1>
-        <p class="lead">If your friends call you <b>Akude</b>, <b>Akde</b>, or sometimes just <b>Monkey</b>… this suspiciously specific website may be for you. 😂</p>
-        <div class="nickname-row">
-          <span class="nickname">Akude ✨</span>
-          <span class="nickname">Akde 😂</span>
-          <span class="nickname">Monkey 🙈</span>
-        </div>
-        <div class="actions">
-          <button class="btn primary" id="yesBtn">Okay, let me in 👀</button>
-          <button class="btn secondary" id="noBtn">Wrong person 😌</button>
-        </div>
-        <div class="message" id="notHerMsg"></div>
+<section class="scene" id="s2">
+  <div class="panel center" id="pinPanel">
+    <div class="hero">🕵️‍♀️</div>
+    <div class="badge">prove you're really her</div>
+    <h2>One tiny security check.</h2>
+    <p class="muted">Type your birthday. Don't worry about the dashes — I'll add them for you. 😌</p>
+    <div class="verify-box">
+      <div class="input-row">
+        <input id="pin" type="text" inputmode="numeric" enterkeyhint="go" maxlength="10" autocomplete="bday" placeholder="DD-MM-YYYY" aria-label="Birth date">
+        <button class="btn primary" id="unlockBtn">Unlock ✨</button>
       </div>
-    </section>
+      <div class="msg" id="pinMsg"></div>
+    </div>
+  </div>
+</section>
 
-    <section class="scene" id="s2">
-      <div class="panel center" id="pinPanel">
-        <div class="orb">🕵️‍♀️</div>
-        <div class="eyebrow">prove you're really her</div>
-        <h2>One tiny security check.</h2>
-        <p class="muted">Enter your birthday. If you get your own birthday wrong, we have bigger problems. 😭</p>
-        <div class="verification">
-          <div class="input-row">
-            <input id="pin" placeholder="DD-MM-YYYY" inputmode="numeric" autocomplete="off">
-            <button class="btn primary" id="unlockBtn">Unlock ✨</button>
-          </div>
-          <div class="message" id="pinMsg"></div>
-        </div>
+<section class="scene" id="s3">
+  <div class="panel center">
+    <div class="hero">🎉</div>
+    <div class="badge">identity confirmed</div>
+    <h1><span class="gradient">Happiest Birthday, Akanksha!</span></h1>
+    <p class="lead">Today you get the crown, the attention, the cake… and absolutely no escape from me. 👑😂</p>
+    <p class="muted">Your best-friend subscription has been renewed for another 365 days. Unfortunately for you, cancellations are disabled.</p>
+    <div class="actions"><button class="btn primary nextBtn" data-next="4">Show me what you made →</button></div>
+  </div>
+</section>
+
+<section class="scene" id="s4">
+  <div class="panel center">
+    <div class="badge">friendship receipts</div>
+    <h2>I brought evidence. 🧾</h2>
+    <p class="muted">Because apparently years of nonsense deserve proper documentation.</p>
+
+    <div class="receipt-grid">
+      <div class="receipt"><strong>∞</strong><h3>Random conversations</h3><p>Started with “hi.” Somehow became a 2-hour discussion about absolutely nothing.</p></div>
+      <div class="receipt"><strong>99%</strong><h3>Roasting each other</h3><p>The remaining 1% is when one of us is eating.</p></div>
+      <div class="receipt"><strong>0%</strong><h3>Chance I stop irritating Akude</h3><p>Sorry. This feature is not planned for any future release.</p></div>
+      <div class="receipt"><strong>100%</strong><h3>Worth keeping</h3><p>The friendship. Not all the screenshots. Some of those are dangerous. 😂</p></div>
+    </div>
+
+    <div class="machine">
+      <div class="badge" style="margin-bottom:12px">compliment machine</div>
+      <div class="machine-screen" id="complimentText">Press the button. I promise to be nice for approximately 3 seconds.</div>
+      <div class="actions" style="margin-top:13px"><button class="btn secondary" id="complimentBtn">Give me a compliment ✨</button></div>
+    </div>
+
+    <div class="actions"><button class="btn primary nextBtn" data-next="5">Open the memory box 📸</button></div>
+  </div>
+</section>
+
+<section class="scene" id="s5">
+  <div class="panel center">
+    <div class="badge">memory box</div>
+    <h2>Four placeholders. Too many stories.</h2>
+    <p class="muted">Your real photos and chat screenshots will replace these later.</p>
+
+    <div class="memory-grid">
+      <div class="memory"><div class="photo">📷</div><div class="memory-copy"><h3>The rare normal picture</h3><p>One of the few moments when both of us looked like functioning humans.</p></div></div>
+      <div class="memory"><div class="photo">😂</div><div class="memory-copy"><h3>No context allowed</h3><p>Some pictures become funnier when absolutely nobody explains them.</p></div></div>
+      <div class="memory"><div class="photo">🙈</div><div class="memory-copy"><h3>Peak Monkey behaviour</h3><p>This is where one of your actual funny photos will go.</p></div></div>
+      <div class="memory"><div class="photo">💜</div><div class="memory-copy"><h3>One I actually like</h3><p>Because not every memory has to be a roast. Just most of them.</p></div></div>
+    </div>
+
+    <div class="chat">
+      <div class="bubble them">Why are you irritating me? 😑</div>
+      <div class="bubble me">Because annoying Akude is part of the friendship package.</div>
+      <div class="bubble them">Idiot.</div>
+      <div class="bubble me">Thank you, Monkey. Very touching. 🥹</div>
+      <div class="bubble them">Go away 😂</div>
+      <div class="bubble me">Request denied.</div>
+    </div>
+
+    <div class="actions"><button class="btn primary nextBtn" data-next="6">I definitely won't press anything 🚨</button></div>
+  </div>
+</section>
+
+<section class="scene" id="s6">
+  <div class="panel center">
+    <div class="hero">🚨</div>
+    <div class="badge">extremely important warning</div>
+    <h2>Akude, please behave for 10 seconds.</h2>
+    <p class="muted">There is exactly one thing I need you NOT to do.</p>
+
+    <div class="warning-box">
+      <button class="btn danger" style="width:100%" id="dangerBtn">DO NOT PRESS THIS BUTTON</button>
+      <div class="msg" id="dangerMsg"></div>
+    </div>
+
+    <div class="actions"><button class="btn primary hidden" id="afterDanger">Okay okay… continue 😭</button></div>
+  </div>
+</section>
+
+<section class="scene" id="s7">
+  <div class="panel center">
+    <div class="badge">the part where I stop joking</div>
+    <h2>A little note for you. 💜</h2>
+
+    <div class="letter">
+      <p>Akanksha,</p>
+      <p>Most of this website is me irritating you, which is very on-brand for us. But I wanted at least one part where I say this properly.</p>
+      <p>I'm genuinely grateful you're in my life. Somewhere between the random chats, stupid jokes, arguments, teasing, and completely useless conversations, you became someone I can count on and someone whose presence makes normal days better.</p>
+      <p>I hope this year brings you the kind of happiness that stays, the success you've been working for, good people around you, lots of new memories, and enough patience to continue dealing with me. 😂</p>
+      <p>Keep being Akude when you're sweet, Akde when you're irritating me, and Monkey whenever you do something completely ridiculous.</p>
+      <p><b>Happiest Birthday, Akanksha. I'm really glad I got you as my best friend. ❤️</b></p>
+      <div class="signature">— Your permanently annoying best friend</div>
+    </div>
+
+    <div class="gift-wrap">
+      <div class="badge">one last unlock</div>
+      <h2 style="font-size:clamp(26px,5vw,40px)">Your real gift is still hidden. 🎁</h2>
+      <p class="muted">Tap the gift below. This time you're actually supposed to press it.</p>
+
+      <button class="gift-btn" id="giftBtn" aria-label="Open birthday gift">🎁</button>
+
+      <div class="gift-reveal hidden" id="giftReveal">
+        <h2 style="font-size:clamp(27px,5vw,40px)">SURPRISE, MONKEY! 🎉</h2>
+        <p><b>Website surprise:</b> completed ✅</p>
+        <p><b>Real-world gift:</b> still locked 🔒</p>
+        <p>To unlock it, you need to meet your idiot best friend today. 😌</p>
+        <p class="muted">And no, sending a screenshot of this page does not count. Nice try, Akde. 😂</p>
       </div>
-    </section>
-
-    <section class="scene" id="s3">
-      <div class="panel center">
-        <div class="orb">🎉</div>
-        <div class="eyebrow">identity confirmed</div>
-        <h1><span class="gradient">Happiest Birthday, Akanksha!</span></h1>
-        <p class="lead">Today you get the crown, the attention, the cake… and absolutely no escape from me. 👑😂</p>
-        <p class="muted">Your best-friend subscription has been renewed for another 365 days. Unfortunately for you, cancellations are disabled.</p>
-        <div class="scan"><span></span></div>
-        <div class="actions">
-          <button class="btn primary nextBtn" data-next="4">Show me what you made →</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" id="s4">
-      <div class="panel center">
-        <div class="eyebrow">friendship receipts</div>
-        <h2>I brought evidence. 🧾</h2>
-        <p class="muted">Because apparently years of nonsense deserve proper documentation.</p>
-
-        <div class="receipt-grid">
-          <div class="receipt"><div class="num">∞</div><h3>Random conversations</h3><p>Started with “hi.” Somehow became a 2-hour discussion about absolutely nothing.</p></div>
-          <div class="receipt"><div class="num">99%</div><h3>Roasting each other</h3><p>The remaining 1% is when one of us is eating.</p></div>
-          <div class="receipt"><div class="num">0%</div><h3>Chance I stop irritating Akude</h3><p>Sorry. This feature is not planned for any future release.</p></div>
-          <div class="receipt"><div class="num">100%</div><h3>Worth keeping</h3><p>The friendship. Not all the screenshots. Some of those are dangerous. 😂</p></div>
-        </div>
-
-        <div class="machine">
-          <div class="eyebrow" style="margin-bottom:12px">compliment machine</div>
-          <div class="machine-screen" id="complimentText">Press the button. I promise to be nice for approximately 3 seconds.</div>
-          <div class="actions" style="margin-top:14px">
-            <button class="btn secondary" id="complimentBtn">Give me a compliment ✨</button>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button class="btn primary nextBtn" data-next="5">Open the memory box 📸</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" id="s5">
-      <div class="panel center">
-        <div class="eyebrow">memory box</div>
-        <h2>Four placeholders. Too many stories.</h2>
-        <p class="muted">These are dummy cards for now. Your real photos and chat screenshots will replace them.</p>
-
-        <div class="memory-grid">
-          <div class="memory"><div class="photo">📷</div><div class="memory-copy"><h3>The rare normal picture</h3><p>One of the few moments when both of us looked like functioning humans.</p></div></div>
-          <div class="memory"><div class="photo">😂</div><div class="memory-copy"><h3>No context allowed</h3><p>Some pictures become funnier when absolutely nobody explains them.</p></div></div>
-          <div class="memory"><div class="photo">🙈</div><div class="memory-copy"><h3>Peak Monkey behaviour</h3><p>This is where one of your actual funny photos will go.</p></div></div>
-          <div class="memory"><div class="photo">💜</div><div class="memory-copy"><h3>One I actually like</h3><p>Because not every memory has to be a roast. Just most of them.</p></div></div>
-        </div>
-
-        <div class="chat">
-          <div class="bubble them">Why are you irritating me? 😑</div>
-          <div class="bubble me">Because annoying Akude is part of the friendship package.</div>
-          <div class="bubble them">Idiot.</div>
-          <div class="bubble me">Thank you, Monkey. Very touching. 🥹</div>
-          <div class="bubble them">Go away 😂</div>
-          <div class="bubble me">Request denied.</div>
-        </div>
-
-        <div class="actions">
-          <button class="btn primary nextBtn" data-next="6">I definitely won't press anything 🚨</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" id="s6">
-      <div class="panel center">
-        <div class="eyebrow">extremely important warning</div>
-        <h2>Akude, please behave for 10 seconds.</h2>
-        <p class="muted">There is exactly one thing I need you NOT to do.</p>
-
-        <div class="warning-box">
-          <button class="btn danger" id="dangerBtn" style="width:100%">DO NOT PRESS THIS BUTTON</button>
-          <div class="message" id="dangerMsg"></div>
-        </div>
-
-        <div class="actions">
-          <button class="btn primary hidden" id="afterDanger">Okay okay… continue 😭</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="scene" id="s7">
-      <div class="panel center">
-        <div class="eyebrow">the part where I stop joking</div>
-        <h2>A little note for you. 💜</h2>
-
-        <div class="letter">
-          <p>Akanksha,</p>
-
-          <p>Most of this website is me irritating you, which is very on-brand for us. But I wanted at least one part where I say this properly.</p>
-
-          <p>I'm genuinely grateful you're in my life. Somewhere between the random chats, stupid jokes, arguments, teasing, and completely useless conversations, you became someone I can count on and someone whose presence makes normal days better.</p>
-
-          <p>I hope this year brings you the kind of happiness that stays, the success you've been working for, good people around you, lots of new memories, and enough patience to continue dealing with me. 😂</p>
-
-          <p>Keep being Akude when you're sweet, Akde when you're irritating me, and Monkey whenever you do something completely ridiculous.</p>
-
-          <p><b>Happiest Birthday, Akanksha. I'm really glad I got you as my best friend. ❤️</b></p>
-
-          <div class="signature">— Your permanently annoying best friend</div>
-        </div>
-
-        <div class="gift-wrap">
-          <div class="eyebrow">one last unlock</div>
-          <h2 style="font-size:clamp(26px,5vw,40px)">Your real gift is still hidden. 🎁</h2>
-          <p class="muted">Tap the gift below. This time you're actually supposed to press it.</p>
-
-          <button class="gift-btn" id="giftBtn" aria-label="Open birthday gift">🎁</button>
-
-          <div class="gift-reveal hidden" id="giftReveal">
-            <h2 style="font-size:clamp(27px,5vw,40px)">SURPRISE, MONKEY! 🎉</h2>
-            <p><b>Website surprise:</b> completed ✅</p>
-            <p><b>Real-world gift:</b> still locked 🔒</p>
-            <p>To unlock it, you need to meet your idiot best friend today. 😌</p>
-            <p class="muted">And no, sending a screenshot of this page does not count. Nice try, Akde. 😂</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
+    </div>
+  </div>
+</section>
+</main>
 
 <script>
 (() => {
-  const total = 7;
   let current = 1;
+  let changing = false;
   let dangerPresses = 0;
   let complimentIndex = 0;
+
+  const $ = (s) => document.querySelector(s);
+  const $$ = (s) => [...document.querySelectorAll(s)];
 
   const compliments = [
     "Okay fine: you make boring days a lot more fun. Don't get used to hearing this. 😌",
@@ -635,123 +644,154 @@
     "Final compliment: having you as my best friend was actually a very good life decision. Rare win. ✨"
   ];
 
-  const q = (s) => document.querySelector(s);
-  const qa = (s) => [...document.querySelectorAll(s)];
-
   function updateProgress(){
-    qa(".bar span").forEach((el, i) => {
-      el.style.width = i < current ? "100%" : "0%";
+    $$('.bar span').forEach((el,i)=>{
+      el.style.width = i < current ? '100%' : '0%';
     });
   }
 
   function showScene(n){
-    current = n;
-    qa(".scene").forEach(el => el.classList.remove("active"));
-    const next = q("#s" + n);
-    if(next){
-      next.classList.add("active");
-      updateProgress();
-      window.scrollTo({top:0, behavior:"smooth"});
-      sparkle(window.innerWidth/2, window.innerHeight/2, 12);
-    }
+    if(changing || n === current) return;
+    changing = true;
+
+    const oldScene = $('#s'+current);
+    const newScene = $('#s'+n);
+
+    oldScene.classList.add('leaving');
+    oldScene.classList.remove('visible');
+
+    window.setTimeout(()=>{
+      oldScene.classList.remove('active','leaving');
+
+      current = n;
+      newScene.classList.add('active');
+
+      requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
+          newScene.classList.add('visible');
+          updateProgress();
+          changing = false;
+          window.scrollTo({top:0,behavior:'smooth'});
+          sparkle(window.innerWidth/2,window.innerHeight/2,8);
+        });
+      });
+    },300);
   }
 
-  function confetti(count=100){
-    const fx=q("#fx");
-    const colors=["#ff6fa6","#8c6cf2","#ffb48b","#ffd66b","#8fdcc8","#ffffff"];
-    for(let i=0;i<count;i++){
-      const piece=document.createElement("div");
-      piece.className="confetti";
-      piece.style.left=(Math.random()*100)+"vw";
-      piece.style.background=colors[Math.floor(Math.random()*colors.length)];
-      piece.style.animationDelay=(Math.random()*.7)+"s";
-      piece.style.animationDuration=(2.5+Math.random()*1.2)+"s";
-      piece.style.transform="rotate("+(Math.random()*360)+"deg)";
-      fx.appendChild(piece);
-      setTimeout(()=>piece.remove(),4200);
-    }
+  function formatBirthday(raw){
+    const digits = raw.replace(/\D/g,'').slice(0,8);
+    if(digits.length <= 2) return digits;
+    if(digits.length <= 4) return digits.slice(0,2) + '-' + digits.slice(2);
+    return digits.slice(0,2) + '-' + digits.slice(2,4) + '-' + digits.slice(4);
   }
-
-  function sparkle(x,y,count=16){
-    const fx=q("#fx");
-    for(let i=0;i<count;i++){
-      const s=document.createElement("div");
-      s.className="spark";
-      s.style.left=x+"px";
-      s.style.top=y+"px";
-      const angle=Math.random()*Math.PI*2;
-      const distance=40+Math.random()*90;
-      s.style.setProperty("--x",(Math.cos(angle)*distance)+"px");
-      s.style.setProperty("--y",(Math.sin(angle)*distance)+"px");
-      fx.appendChild(s);
-      setTimeout(()=>s.remove(),900);
-    }
-  }
-
-  q("#yesBtn").addEventListener("click",()=>showScene(2));
-  q("#noBtn").addEventListener("click",()=>{
-    q("#notHerMsg").textContent="Then this is extremely awkward. Please return the birthday website to Akanksha. 😂";
-  });
 
   function unlock(){
-    const value=q("#pin").value.trim();
-    const msg=q("#pinMsg");
-    if(value==="04-09-2002"){
-      msg.textContent="Correct. Monkey access granted. ✨";
-      confetti(110);
-      setTimeout(()=>showScene(3),500);
+    const input = $('#pin');
+    const value = input.value.trim();
+    const msg = $('#pinMsg');
+
+    if(value === '04-09-2002'){
+      msg.textContent = 'Correct. Monkey access granted. ✨';
+      confetti(60);
+      setTimeout(()=>showScene(3),390);
     }else{
-      msg.textContent="Wrong birthday 😭 Fake Akanksha detected.";
-      const panel=q("#pinPanel");
-      panel.classList.remove("shake");
+      msg.textContent = 'Wrong birthday 😭 Fake Akanksha detected.';
+      const panel = $('#pinPanel');
+      panel.classList.remove('shake');
       void panel.offsetWidth;
-      panel.classList.add("shake");
+      panel.classList.add('shake');
     }
   }
 
-  q("#unlockBtn").addEventListener("click",unlock);
-  q("#pin").addEventListener("keydown",(e)=>{ if(e.key==="Enter") unlock(); });
+  function confetti(count=60){
+    const fx=$('#fx');
+    const colors=['#ff7fab','#a88cf0','#ffb994','#ffd573','#ffffff'];
 
-  qa(".nextBtn").forEach(btn=>{
-    btn.addEventListener("click",()=>showScene(Number(btn.dataset.next)));
+    for(let i=0;i<count;i++){
+      const p=document.createElement('div');
+      p.className='conf';
+      p.style.left=(Math.random()*100)+'vw';
+      p.style.background=colors[Math.floor(Math.random()*colors.length)];
+      p.style.animationDelay=(Math.random()*.30)+'s';
+      p.style.animationDuration=(2.2+Math.random()*.7)+'s';
+      fx.appendChild(p);
+      setTimeout(()=>p.remove(),3200);
+    }
+  }
+
+  function sparkle(x,y,count=8){
+    const fx=$('#fx');
+    for(let i=0;i<count;i++){
+      const s=document.createElement('div');
+      s.className='spark';
+      s.style.left=x+'px';
+      s.style.top=y+'px';
+      const a=Math.random()*Math.PI*2;
+      const d=30+Math.random()*55;
+      s.style.setProperty('--x',(Math.cos(a)*d)+'px');
+      s.style.setProperty('--y',(Math.sin(a)*d)+'px');
+      fx.appendChild(s);
+      setTimeout(()=>s.remove(),800);
+    }
+  }
+
+  $('#yesBtn').addEventListener('click',()=>showScene(2));
+  $('#noBtn').addEventListener('click',()=>{
+    $('#notHer').textContent='Then this is awkward. Please return the birthday website to Akanksha. 😂';
   });
 
-  q("#complimentBtn").addEventListener("click",()=>{
-    q("#complimentText").textContent=compliments[complimentIndex % compliments.length];
+  $('#pin').addEventListener('input',(e)=>{
+    const cursorAtEnd = e.target.selectionStart === e.target.value.length;
+    e.target.value = formatBirthday(e.target.value);
+    if(cursorAtEnd){
+      const end=e.target.value.length;
+      e.target.setSelectionRange(end,end);
+    }
+  });
+  $('#pin').addEventListener('keydown',(e)=>{
+    if(e.key === 'Enter') unlock();
+  });
+  $('#unlockBtn').addEventListener('click',unlock);
+
+  $$('.nextBtn').forEach(btn=>{
+    btn.addEventListener('click',()=>showScene(Number(btn.dataset.next)));
+  });
+
+  $('#complimentBtn').addEventListener('click',()=>{
+    $('#complimentText').textContent=compliments[complimentIndex % compliments.length];
     complimentIndex++;
-    sparkle(window.innerWidth/2, window.innerHeight*.55, 8);
   });
 
-  q("#dangerBtn").addEventListener("click",()=>{
+  $('#dangerBtn').addEventListener('click',()=>{
     dangerPresses++;
-    const btn=q("#dangerBtn");
-    const msg=q("#dangerMsg");
+    const btn=$('#dangerBtn');
+    const msg=$('#dangerMsg');
 
     if(dangerPresses===1){
-      msg.textContent="AKUDE. The button literally had one instruction. 😭";
+      msg.textContent='AKUDE. The button literally had one instruction. 😭';
     }else if(dangerPresses===2){
-      msg.textContent="You pressed it AGAIN? Monkey behaviour confirmed. 😂";
-      btn.textContent="LAST WARNING. SERIOUSLY.";
+      msg.textContent='You pressed it AGAIN? Monkey behaviour confirmed. 😂';
+      btn.textContent='LAST WARNING. SERIOUSLY.';
     }else{
-      msg.textContent="Fine. This is exactly why the nickname Monkey exists. 🎉";
-      btn.textContent="HAPPY BIRTHDAY AKANKSHA! 🎂";
-      confetti(170);
-      sparkle(window.innerWidth/2,window.innerHeight*.55,32);
-      q("#afterDanger").classList.remove("hidden");
+      msg.textContent='Fine. This is exactly why the nickname Monkey exists. 🎉';
+      btn.textContent='HAPPY BIRTHDAY AKANKSHA! 🎂';
+      confetti(90);
+      $('#afterDanger').classList.remove('hidden');
     }
   });
 
-  q("#afterDanger").addEventListener("click",()=>showScene(7));
+  $('#afterDanger').addEventListener('click',()=>showScene(7));
 
-  q("#giftBtn").addEventListener("click",()=>{
-    const reveal=q("#giftReveal");
-    reveal.classList.remove("hidden");
-    q("#giftBtn").textContent="🎊";
-    confetti(180);
-    sparkle(window.innerWidth/2,window.innerHeight*.62,36);
-    setTimeout(()=>reveal.scrollIntoView({behavior:"smooth",block:"center"}),100);
+  $('#giftBtn').addEventListener('click',()=>{
+    const reveal=$('#giftReveal');
+    reveal.classList.remove('hidden');
+    $('#giftBtn').textContent='🎊';
+    confetti(90);
+    setTimeout(()=>reveal.scrollIntoView({behavior:'smooth',block:'center'}),80);
   });
 
+  const first=$('#s1');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>first.classList.add('visible')));
   updateProgress();
 })();
 </script>
