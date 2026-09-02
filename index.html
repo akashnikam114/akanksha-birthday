@@ -220,6 +220,7 @@ p{
   margin-top:23px;
 }
 .btn{
+  position:relative;
   min-height:52px;
   padding:13px 19px;
   border:0;
@@ -231,10 +232,29 @@ p{
 }
 .btn:hover{transform:translate3d(0,-2px,0)}
 .btn:active{transform:scale(.985)}
-.primary{color:white;background:linear-gradient(135deg,var(--pinkDeep),var(--lavDeep));box-shadow:0 11px 25px rgba(110,73,155,.16)}
+.btn:focus-visible{outline:4px solid rgba(255,213,115,.75);outline-offset:4px}
+.primary{color:white;background:linear-gradient(135deg,#f0478b,#6848cf);border:2px solid rgba(255,255,255,.92);box-shadow:0 12px 28px rgba(110,73,155,.30),0 0 0 5px rgba(255,127,171,.12)}
 .secondary{color:var(--ink);background:rgba(255,255,255,.92);border:1px solid var(--line)}
 .danger{color:white;background:linear-gradient(135deg,#ff5f81,#ff8a70)}
 .hidden{display:none!important}
+.scene.active .actions .primary:not(.hidden){animation:actionPulse 1.9s ease-in-out infinite}
+.scene.active .actions .primary:not(.hidden)::after{
+  content:"Tap to continue";
+  position:absolute;
+  left:50%;
+  bottom:-25px;
+  transform:translateX(-50%);
+  width:max-content;
+  color:var(--lavDeep);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+@keyframes actionPulse{
+  0%,100%{box-shadow:0 12px 28px rgba(110,73,155,.30),0 0 0 5px rgba(255,127,171,.12)}
+  50%{box-shadow:0 15px 34px rgba(110,73,155,.40),0 0 0 11px rgba(255,127,171,.06);transform:translate3d(0,-3px,0)}
+}
 
 .verify-box{
   max-width:540px;
@@ -356,7 +376,8 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
 }
 .disc{width:98px;aspect-ratio:1;display:grid;place-items:center;border-radius:50%;font-size:30px;background:repeating-radial-gradient(circle,#1c151f 0 6px,#392a3d 7px 10px);border:4px solid rgba(255,255,255,.13)}
 .disc.playing{animation:spin 5s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-.song-copy small{font-size:10px;font-weight:900;letter-spacing:.16em;color:#ffd0e0}.song-copy h3{font-size:27px;margin:4px 0}.song-copy p{margin:0;color:#f2ddea;font-size:13px}.song-play{width:58px;height:58px;padding:0;border-radius:50%;background:white;color:#7f467d;font-size:18px}
+.song-copy small{font-size:10px;font-weight:900;letter-spacing:.16em;color:#ffd0e0}.song-copy h3{font-size:27px;margin:4px 0}.song-copy p{margin:0;color:#f2ddea;font-size:13px}.song-play{width:64px;height:64px;padding:0;border:3px solid #ffd0e0;border-radius:50%;background:white;color:#7f467d;font-size:20px;box-shadow:0 0 0 7px rgba(255,255,255,.13),0 10px 24px rgba(20,8,28,.25);animation:songPulse 1.7s ease-in-out infinite}
+@keyframes songPulse{50%{transform:scale(1.08);box-shadow:0 0 0 12px rgba(255,255,255,.07),0 13px 30px rgba(20,8,28,.32)}}
 .song-frame{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;border:0}
 .audio-help{margin:11px auto 0;font-size:12px;color:var(--muted)}
 .memory-copy{padding:14px}
@@ -411,6 +432,7 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
   box-shadow:var(--shadowSmall);
 }
 .gift-btn{
+  position:relative;
   width:168px;height:168px;
   margin:auto;
   display:grid;place-items:center;
@@ -419,6 +441,7 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
   cursor:pointer;
   animation:giftFloat 1.8s ease-in-out infinite;
 }
+.gift-btn::after{content:"Tap the gift";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:max-content;padding:6px 10px;border-radius:99px;background:var(--lavDeep);color:white;font-size:11px;font-weight:900;box-shadow:var(--shadowSmall)}
 @keyframes giftFloat{50%{transform:translate3d(0,-7px,0) scale(1.045)}}
 .gift-reveal{
   margin-top:14px;
@@ -469,7 +492,8 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
   p{font-size:15px;line-height:1.62}
   .lead{max-width:100%}
   .actions{flex-direction:column}
-  .btn{width:100%;min-height:50px;padding:13px 14px;font-size:14px}
+  .btn{width:100%;min-height:56px;padding:15px 14px;font-size:15px}
+  .actions{gap:28px;margin-bottom:8px}
   .progress{width:calc(100vw - 18px);padding:8px 9px}
   .brand{font-size:10px}
   .nickname{font-size:11px;padding:7px 10px}
