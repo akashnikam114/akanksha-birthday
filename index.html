@@ -374,7 +374,6 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
 .audio-help{margin:11px auto 0;font-size:12px;color:var(--muted)}
 .memory-copy{padding:14px}
 .memory-copy p{margin:0;font-size:13px;color:var(--muted)}
-.swipe-hint{display:none;margin:13px 0 0;color:var(--lavDeep);font-size:12px;font-weight:900}
 .birthday-reveal{max-width:560px;margin:22px auto;position:relative;overflow:hidden;border-radius:27px;box-shadow:0 18px 44px rgba(74,48,91,.22)}
 .birthday-reveal img{width:100%;max-height:440px;display:block;object-fit:cover;object-position:center 26%}
 .birthday-reveal::after{content:"Today’s birthday girl ✨";position:absolute;left:14px;bottom:14px;padding:8px 12px;border-radius:99px;background:rgba(35,22,40,.72);backdrop-filter:blur(10px);color:white;font-size:12px;font-weight:900}
@@ -483,10 +482,6 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
 @media(max-width:700px){
   .receipt-grid,.memory-grid{grid-template-columns:1fr}
   .transformation{grid-template-columns:1fr 1fr}.transform-arrow{grid-column:1/-1;grid-row:2;transform:rotate(90deg)}
-  .memory-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:8px;padding:4px 8px 16px;margin-left:-8px;margin-right:-8px;gap:13px;-webkit-overflow-scrolling:touch}
-  .memory-grid>.memory,.memory-grid>.transformation{flex:0 0 88%;scroll-snap-align:center}
-  .memory-grid .transformation{grid-template-columns:1fr 1fr}
-  .memory-grid::-webkit-scrollbar{display:none}.swipe-hint{display:block}
 }
 @media(max-width:560px){
   .app{padding:8px 8px calc(18px + env(safe-area-inset-bottom))}
@@ -635,7 +630,6 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
       <div class="memory"><div class="photo contain"><img src="assets/ea9b3783-2184-46e6-9488-035e3bbed698.jpeg" alt="A hand-drawn portrait of Akanksha"></div><div class="memory-copy"><h3>The 10/10 drawing 🎨</h3><p>Artist review: very good. Subject review: still pending. 😂</p></div></div>
       <div class="memory"><div class="photo"><img src="assets/90833065-9e62-471a-801b-71db0516b834.jpeg" alt="Akanksha with little Krishna on a special day"></div><div class="memory-copy"><h3>A truly special frame 💜</h3><p>Soft, beautiful, and absolutely worth keeping.</p></div></div>
     </div>
-    <div class="swipe-hint">Swipe through the memories →</div>
 
     <div class="memory" style="max-width:520px;margin:18px auto 0"><div class="photo contain" style="aspect-ratio:946/2048"><img src="assets/IMG_3857.png" alt="A funny WhatsApp conversation with Akanksha"></div><div class="memory-copy"><h3>Stupid conversation archive 😂</h3><p>“Hoy 😂😂 gavat jaych ahe” — no context, no explanation, just us.</p></div></div>
 
