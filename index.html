@@ -391,6 +391,18 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
 }
 .them{justify-self:start;background:white;border-bottom-left-radius:5px}
 .me{justify-self:end;color:white;background:linear-gradient(135deg,var(--pinkDeep),var(--lavDeep));border-bottom-right-radius:5px}
+.chat-memory{max-width:520px;margin:20px auto 0;position:relative;overflow:hidden;aspect-ratio:360/782;border:9px solid #2c2430;border-radius:32px;background:#17131a;box-shadow:0 23px 55px rgba(52,31,62,.30)}
+.chat-memory video{width:100%;height:100%;display:block;object-fit:cover}
+.chat-memory::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(16,10,20,.18),transparent 30%,rgba(20,10,27,.78));pointer-events:none}
+.chat-memory-copy{position:absolute;z-index:2;left:18px;right:18px;bottom:22px;color:white;text-align:left}
+.chat-memory-copy small{font-size:10px;font-weight:900;letter-spacing:.14em;color:#ffd2e2}.chat-memory-copy h3{font-size:clamp(23px,5vw,34px);margin:5px 0 7px}.chat-memory-copy p{margin:0;color:#f3e7f4;font-size:13px;line-height:1.5}
+.open-when{margin-top:30px}.open-when>p{color:var(--muted)}
+.open-when-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:17px;text-align:left}
+.open-card{overflow:hidden;border:1px solid rgba(114,80,137,.10);border-radius:22px;background:rgba(255,255,255,.87);box-shadow:var(--shadowSmall);transition:.2s}
+.open-card[open]{transform:translateY(-2px);box-shadow:0 16px 34px rgba(82,52,102,.14)}
+.open-card summary{min-height:154px;padding:19px;display:flex;flex-direction:column;justify-content:space-between;list-style:none;cursor:pointer;user-select:none}.open-card summary::-webkit-details-marker{display:none}
+.open-card-icon{font-size:34px}.open-card strong{font-size:17px;line-height:1.25}.open-card summary span:last-child{color:var(--lavDeep);font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+.open-card-message{padding:0 19px 19px;color:var(--muted);font-size:13.5px;line-height:1.6;animation:reveal .3s ease both}.open-card-message b{color:var(--ink)}
 
 .warning-box{
   max-width:560px;
@@ -482,6 +494,7 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
 @media(max-width:700px){
   .receipt-grid,.memory-grid{grid-template-columns:1fr}
   .transformation{grid-template-columns:1fr 1fr}.transform-arrow{grid-column:1/-1;grid-row:2;transform:rotate(90deg)}
+  .open-when-grid{grid-template-columns:1fr}.open-card summary{min-height:112px}
 }
 @media(max-width:560px){
   .app{padding:8px 8px calc(18px + env(safe-area-inset-bottom))}
@@ -631,7 +644,21 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
       <div class="memory"><div class="photo"><img src="assets/90833065-9e62-471a-801b-71db0516b834.jpeg" alt="Akanksha with little Krishna on a special day"></div><div class="memory-copy"><h3>A truly special frame 💜</h3><p>Soft, beautiful, and absolutely worth keeping.</p></div></div>
     </div>
 
-    <div class="memory" style="max-width:520px;margin:18px auto 0"><div class="photo contain" style="aspect-ratio:946/2048"><img src="assets/IMG_3857.png" alt="A funny WhatsApp conversation with Akanksha"></div><div class="memory-copy"><h3>Stupid conversation archive 😂</h3><p>“Hoy 😂😂 gavat jaych ahe” — no context, no explanation, just us.</p></div></div>
+    <div class="chat-memory">
+      <video autoplay muted loop playsinline preload="metadata" poster="assets/chat-memories-cover.jpg" aria-label="A blurred montage of funny WhatsApp chat memories"><source src="assets/chat-memories.mp4" type="video/mp4"></video>
+      <div class="chat-memory-copy"><small>OUR CHAT ARCHIVE</small><h3>Thousands of messages. 😂</h3><p>Countless stupid conversations, random updates, unnecessary arguments—and one friendship I would never trade.</p></div>
+    </div>
+
+    <div class="open-when">
+      <div class="badge">three little notes for later</div>
+      <h2 style="font-size:clamp(26px,5vw,39px)">Open when you need one. 💌</h2>
+      <p>These are yours whenever the moment feels right.</p>
+      <div class="open-when-grid">
+        <details class="open-card"><summary><span class="open-card-icon">🌧️</span><strong>Open when you feel low</strong><span>Open note →</span></summary><div class="open-card-message"><b>Bad days are allowed, Akude.</b> But please don’t let one difficult moment make you forget how strong, capable, and loved you are. Rest for a while—then come back. I’ll still be here to irritate you. 💜</div></details>
+        <details class="open-card"><summary><span class="open-card-icon">✨</span><strong>Open when you need motivation</strong><span>Open note →</span></summary><div class="open-card-message"><b>You have already handled so much.</b> Trust the person you are becoming. Take the next small step, even if it isn’t perfect. I believe in you—probably more than I say out loud.</div></details>
+        <details class="open-card"><summary><span class="open-card-icon">🐒</span><strong>Open when you miss your idiot friend</strong><span>Open note →</span></summary><div class="open-card-message"><b>First of all: excellent taste.</b> Send me one completely unnecessary message and I will reply with equal nonsense. Distance, busy days, or silly arguments cannot cancel this friendship subscription. 😂❤️</div></details>
+      </div>
+    </div>
 
     <div class="actions"><button class="btn primary nextBtn" data-next="6">I definitely won't press anything 🚨</button></div>
   </div>
