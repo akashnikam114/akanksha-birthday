@@ -90,8 +90,10 @@ button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
   -webkit-backdrop-filter:blur(16px);
 }
 .bars{display:flex;gap:5px;flex:1}
-.bar{height:6px;flex:1;overflow:hidden;border-radius:99px;background:rgba(97,66,112,.09)}
-.bar span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--pink),var(--lav));transition:width .50s cubic-bezier(.22,.8,.22,1)}
+.bar{height:25px;flex:1;position:relative;display:grid;place-items:center;border-radius:99px;background:rgba(97,66,112,.07);overflow:hidden}
+.bar span{position:absolute;inset:0;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--pink),var(--lav));transition:width .50s cubic-bezier(.22,.8,.22,1)}
+.bar i{position:relative;z-index:1;font-size:11px;font-style:normal;filter:grayscale(1);opacity:.48;transition:.35s}
+.bar:has(span[style*="100%"] ) i{filter:none;opacity:1}
 .brand{font-size:11px;font-weight:900;color:var(--lavDeep);white-space:nowrap}
 
 .scene{
@@ -372,6 +374,10 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
 .audio-help{margin:11px auto 0;font-size:12px;color:var(--muted)}
 .memory-copy{padding:14px}
 .memory-copy p{margin:0;font-size:13px;color:var(--muted)}
+.swipe-hint{display:none;margin:13px 0 0;color:var(--lavDeep);font-size:12px;font-weight:900}
+.birthday-reveal{max-width:560px;margin:22px auto;position:relative;overflow:hidden;border-radius:27px;box-shadow:0 18px 44px rgba(74,48,91,.22)}
+.birthday-reveal img{width:100%;max-height:440px;display:block;object-fit:cover;object-position:center 26%}
+.birthday-reveal::after{content:"Today’s birthday girl ✨";position:absolute;left:14px;bottom:14px;padding:8px 12px;border-radius:99px;background:rgba(35,22,40,.72);backdrop-filter:blur(10px);color:white;font-size:12px;font-weight:900}
 
 .chat{max-width:680px;margin:22px auto 0;display:grid;gap:10px}
 .bubble{
@@ -441,6 +447,12 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
   border:1px solid var(--line);
   animation:reveal .40s ease both;
 }
+.gift-reveal:not(.hidden){position:fixed;z-index:120;inset:0;margin:0;padding:clamp(28px,8vw,80px) 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto;border:0;border-radius:0;background:radial-gradient(circle at 50% 25%,#fff 0,#fff3f8 35%,#eee9ff 100%);animation:finalReveal .6s ease both}
+.gift-reveal:not(.hidden) h2{font-size:clamp(38px,9vw,76px);background:linear-gradient(112deg,#df4f8b,#7258d5);background-clip:text;color:transparent}
+.gift-reveal:not(.hidden) p{font-size:clamp(16px,3vw,20px)}
+.final-heart{font-size:70px;animation:heartBeat 1.4s ease-in-out infinite}
+@keyframes finalReveal{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@keyframes heartBeat{50%{transform:scale(1.12)}}
 @keyframes reveal{from{opacity:0;transform:translate3d(0,8px,0) scale(.97)}to{opacity:1;transform:none}}
 
 #fx{
@@ -471,6 +483,10 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
 @media(max-width:700px){
   .receipt-grid,.memory-grid{grid-template-columns:1fr}
   .transformation{grid-template-columns:1fr 1fr}.transform-arrow{grid-column:1/-1;grid-row:2;transform:rotate(90deg)}
+  .memory-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:8px;padding:4px 8px 16px;margin-left:-8px;margin-right:-8px;gap:13px;-webkit-overflow-scrolling:touch}
+  .memory-grid>.memory,.memory-grid>.transformation{flex:0 0 88%;scroll-snap-align:center}
+  .memory-grid .transformation{grid-template-columns:1fr 1fr}
+  .memory-grid::-webkit-scrollbar{display:none}.swipe-hint{display:block}
 }
 @media(max-width:560px){
   .app{padding:8px 8px calc(18px + env(safe-area-inset-bottom))}
@@ -519,13 +535,13 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
 
 <div class="progress">
   <div class="bars">
-    <div class="bar"><span></span></div>
-    <div class="bar"><span></span></div>
-    <div class="bar"><span></span></div>
-    <div class="bar"><span></span></div>
-    <div class="bar"><span></span></div>
-    <div class="bar"><span></span></div>
-    <div class="bar"><span></span></div>
+    <div class="bar"><span></span><i>🔐</i></div>
+    <div class="bar"><span></span><i>🎂</i></div>
+    <div class="bar"><span></span><i>🎉</i></div>
+    <div class="bar"><span></span><i>🧾</i></div>
+    <div class="bar"><span></span><i>📸</i></div>
+    <div class="bar"><span></span><i>🚨</i></div>
+    <div class="bar"><span></span><i>💜</i></div>
   </div>
   <div class="brand">AKANKSHA ✨</div>
 </div>
@@ -568,6 +584,7 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
     <div class="badge">identity confirmed</div>
     <h1><span class="gradient">Happiest Birthday, Akanksha!</span></h1>
     <p class="lead">Today you get the crown, the attention, the cake… and absolutely no escape from me. 👑😂</p>
+    <div class="birthday-reveal"><img src="assets/90833065-9e62-471a-801b-71db0516b834.jpeg" alt="Akanksha on her special day"></div>
     <p class="muted">Your best-friend subscription has been renewed for another 365 days. Unfortunately for you, cancellations are disabled.</p>
     <div class="song-card">
       <div class="disc" id="songDisc">♫</div>
@@ -618,6 +635,7 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
       <div class="memory"><div class="photo contain"><img src="assets/ea9b3783-2184-46e6-9488-035e3bbed698.jpeg" alt="A hand-drawn portrait of Akanksha"></div><div class="memory-copy"><h3>The 10/10 drawing 🎨</h3><p>Artist review: very good. Subject review: still pending. 😂</p></div></div>
       <div class="memory"><div class="photo"><img src="assets/90833065-9e62-471a-801b-71db0516b834.jpeg" alt="Akanksha with little Krishna on a special day"></div><div class="memory-copy"><h3>A truly special frame 💜</h3><p>Soft, beautiful, and absolutely worth keeping.</p></div></div>
     </div>
+    <div class="swipe-hint">Swipe through the memories →</div>
 
     <div class="memory" style="max-width:520px;margin:18px auto 0"><div class="photo contain" style="aspect-ratio:946/2048"><img src="assets/IMG_3857.png" alt="A funny WhatsApp conversation with Akanksha"></div><div class="memory-copy"><h3>Stupid conversation archive 😂</h3><p>“Hoy 😂😂 gavat jaych ahe” — no context, no explanation, just us.</p></div></div>
 
@@ -664,11 +682,13 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
       <button class="gift-btn" id="giftBtn" aria-label="Open birthday gift">🎁</button>
 
       <div class="gift-reveal hidden" id="giftReveal">
+        <div class="final-heart">💜</div>
         <h2 style="font-size:clamp(27px,5vw,40px)">SURPRISE, MONKEY! 🎉</h2>
         <p><b>Website surprise:</b> completed ✅</p>
         <p><b>Real-world gift:</b> still locked 🔒</p>
         <p>To unlock it, you need to meet your idiot best friend today. 😌</p>
         <p class="muted">And no, sending a screenshot of this page does not count. Nice try, Akde. 😂</p>
+        <div class="actions"><button class="btn primary" id="replayBtn">Replay the surprise ↻</button></div>
       </div>
     </div>
   </div>
@@ -816,14 +836,34 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
   const songDisc=$('#songDisc');
   let songStarted=false;
   let songPlaying=false;
+  let fadeTimer=null;
+  function songCommand(func,args=[]){
+    song.contentWindow?.postMessage(JSON.stringify({event:'command',func,args}), 'https://www.youtube.com');
+  }
+  function fadeSong(from,to,done){
+    clearInterval(fadeTimer);
+    let volume=from;
+    const step=to>from?5:-5;
+    songCommand('setVolume',[volume]);
+    fadeTimer=setInterval(()=>{
+      volume+=step;
+      songCommand('setVolume',[Math.max(0,Math.min(100,volume))]);
+      if((step>0&&volume>=to)||(step<0&&volume<=to)){clearInterval(fadeTimer);done?.()}
+    },70);
+  }
   songBtn.addEventListener('click',()=>{
     if(!songStarted){
       song.src='https://www.youtube.com/embed/uErMts4r-Gc?autoplay=1&enablejsapi=1&playsinline=1&rel=0';
       songStarted=true;
       songPlaying=true;
+      setTimeout(()=>fadeSong(0,100),1200);
+    }else if(songPlaying){
+      songPlaying=false;
+      fadeSong(100,0,()=>songCommand('pauseVideo'));
     }else{
-      songPlaying=!songPlaying;
-      song.contentWindow.postMessage(JSON.stringify({event:'command',func:songPlaying?'playVideo':'pauseVideo',args:[]}), 'https://www.youtube.com');
+      songPlaying=true;
+      songCommand('playVideo');
+      fadeSong(0,100);
     }
     songBtn.textContent=songPlaying?'❚❚':'▶';
     songBtn.setAttribute('aria-label',songPlaying?'Pause Maafi':'Play Maafi');
@@ -857,6 +897,17 @@ input:focus{border-color:rgba(126,98,215,.55);box-shadow:0 0 0 4px rgba(126,98,2
     $('#giftBtn').textContent='🎊';
     confetti(90);
     setTimeout(()=>reveal.scrollIntoView({behavior:'smooth',block:'center'}),80);
+  });
+
+  $('#replayBtn').addEventListener('click',()=>{
+    $('#giftReveal').classList.add('hidden');
+    $('#giftBtn').textContent='🎁';
+    dangerPresses=0;
+    $('#dangerBtn').textContent='DO NOT PRESS THIS BUTTON';
+    $('#dangerMsg').textContent='';
+    $('#afterDanger').classList.add('hidden');
+    if(songStarted){songPlaying=false;fadeSong(100,0,()=>songCommand('pauseVideo'));songBtn.textContent='▶';songDisc.classList.remove('playing')}
+    showScene(1);
   });
 
   const first=$('#s1');
